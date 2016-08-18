@@ -43,7 +43,9 @@ package body synchronization_pkg is
   procedure wait_on (
     signal event : event_t) is
   begin
-    wait for 1 ns;
+    if event = cleared then
+      wait until event = set;
+    end if;
   end;
 
   procedure wait_on (
@@ -51,8 +53,10 @@ package body synchronization_pkg is
     constant timeout   : in  time;
     variable timed_out : out boolean) is
   begin
-    wait for 1 ns;
-    timed_out := false;
+    if event = cleared then
+      wait until event = set for timeout;
+    end if;
+    timed_out := event = cleared;
   end;
 
 end package body synchronization_pkg;

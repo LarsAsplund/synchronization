@@ -67,12 +67,12 @@ begin
     wait;
   end process;
 
-  test_runner_watchdog(runner, 100 us);
+  test_runner_watchdog(runner, 100 ns);
 
   blocker: process is
   begin
     wait for blocking_time_c;
-    clear(blocking_event);
+    set(blocking_event);
     wait;
   end process blocker;
 
