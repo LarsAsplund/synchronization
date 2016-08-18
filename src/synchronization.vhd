@@ -31,11 +31,13 @@ package body synchronization_pkg is
   procedure set (
     signal event : out event_t) is
   begin
+    event <= set;
   end;
 
   procedure clear (
     signal event : out event_t) is
   begin
+    event <= cleared;
   end;
 
   procedure wait_on (

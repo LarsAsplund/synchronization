@@ -24,12 +24,16 @@ begin
         check_false(is_set(test_event), "Event not cleared");
       elsif run("Test that an event can be set and cleared") then
         set(test_event);
+        wait for 0 ns;
         check(is_set(test_event), "Event not set");
         set(test_event);
+        wait for 0 ns;
         check(is_set(test_event), "Setting an already set event shall not change its state");
         clear(test_event);
+        wait for 0 ns;
         check_false(is_set(test_event), "Event not cleared");
         clear(test_event);
+        wait for 0 ns;
         check_false(is_set(test_event), "Clearing an already cleared event shall not change its state");
       elsif run("Test that a wait on a set event does not block") then
         set(test_event);
