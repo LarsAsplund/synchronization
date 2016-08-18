@@ -25,7 +25,7 @@ package body synchronization_pkg is
     signal event : event_t)
     return boolean is
   begin
-    return true;
+    return event = set;
   end;
 
   procedure set (
