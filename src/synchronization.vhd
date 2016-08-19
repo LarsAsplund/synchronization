@@ -54,6 +54,8 @@ package body synchronization_pkg is
     variable timed_out : out boolean) is
   begin
     if event = cleared then
+      assert timeout > 0 ns
+        report "Setting negative timeout to 0 ns" severity warning;
       wait until event = set for maximum(0 ns, timeout);
     end if;
     timed_out := event = cleared;
