@@ -1,1 +1,1 @@
-This repository provides a VHDL package containing various synchronization mechanisms.
+This repository provides a VHDL 2008 package containing various synchronization mechanisms. Support for other VHDL revisions is TBD.
