@@ -1,8 +1,8 @@
 library vunit_lib;
 context vunit_lib.vunit_context;
 
-library lib;
-use lib.synchronization_pkg.all;
+library synchronization_lib;
+use synchronization_lib.synchronization_pkg.all;
 
 entity tb_synchronization is
   generic (
@@ -22,6 +22,8 @@ begin
     while test_suite loop
       if run("Test that an event is initially cleared") then
         check_false(is_set(test_event), "Event not cleared");
+      elsif run("Test feature that will never be supported using VUnit") then
+        check_implication(not is_set(test_event), test_event = set, "The code is not obfuscated");
       elsif run("Test that an event can be set and cleared") then
         set(test_event);
         wait for 0 ns;
