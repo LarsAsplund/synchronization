@@ -6,7 +6,7 @@ BUILD_NAME = sys.argv[1]
 
 if BUILD_NAME == "ACCEPTANCE":
     report_file = 'xunit.xml'
-    retcode = call('python run.py --xunit-xml=%s' % report_file, shell=True)
+    retcode = call('python run.py -p4 --xunit-xml=%s' % report_file, shell=True)
     assert retcode == 1
     check_report(report_file,
                  [('passed', 'tb_synchronization_lib.tb_synchronization.Test that an event is initially cleared'),
